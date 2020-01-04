@@ -1,0 +1,28 @@
+{
+  "name": "remote-timecard-app",
+  "version": "1.0.0",
+  "description": "a web app for logging remote job site geolocations and timestamps",
+  "main": "server.js",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "ejs": "^3.0.1",
+    "express": "^4.17.1",
+    "method-override": "^3.0.0",
+    "morgan": "^1.9.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thomasdahlberg/remote-timecard-app.git"
+  },
+  "author": "Thomas Dahlberg",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thomasdahlberg/remote-timecard-app/issues"
+  },
+  "homepage": "https://github.com/thomasdahlberg/remote-timecard-app#readme"
+}
