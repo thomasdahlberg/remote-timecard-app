@@ -7,7 +7,8 @@ const userSchema = new mongoose.Schema({
     session: [{type: Schema.Types.ObjectId, ref: 'Session'}],
     name: String,
     totalHours: Number,
-    active: Boolean
+    active: Boolean,
+    adminUser: Boolean 
 },{
     timestamps: true
 });
