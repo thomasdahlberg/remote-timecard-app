@@ -5,6 +5,7 @@ const session = require('express-session');
 const passport = require('passport');
 const methodOverride = require('method-override');
 const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/users');
 
 //Env
 require('dotenv').config();
@@ -35,6 +36,7 @@ app.use(passport.session());
 
 //Routes
 app.use('/', indexRouter);
+app.use('/', usersRouter)
 
 
 //App Listener

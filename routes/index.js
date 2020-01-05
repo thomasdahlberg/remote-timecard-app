@@ -3,7 +3,7 @@ const passport = require('passport');
 
 router.get('/', function(req, res) {
     res.render('index', {
-    user: req.user});
+    user: req.user, title: 'Remote Timecard'});
   });
 
 router.get('/auth/google', passport.authenticate(
@@ -14,7 +14,7 @@ router.get('/auth/google', passport.authenticate(
 router.get('oauth2callback', passport.authenticate(
     'google',
     {
-        successRedirect: '',
+        successRedirect: '/',
         failureRedirect: '/'
     }
 ));
@@ -23,3 +23,5 @@ router.get('/logout', function(req, res){
     req.logout();
     res.redirect('/');
 });
+
+module.exports = router;
