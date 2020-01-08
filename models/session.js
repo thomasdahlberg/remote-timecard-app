@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+
 
 const timeCardValidationSchema = new mongoose.Schema({
     timePunch: Date,
@@ -14,7 +16,6 @@ const sessionSchema = new mongoose.Schema({
     jobsite: {type: Schema.Types.ObjectId, ref: 'Jobsite'},
     clockIn: timeCardValidationSchema,
     clockOut: timeCardValidationSchema,
-    onSiteVerified = Boolean,
     hourSum: Number
 },{
     timestamps: true

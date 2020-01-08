@@ -6,6 +6,7 @@ const passport = require('passport');
 const methodOverride = require('method-override');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+const sessionsRouter = require('./routes/sessions');
 
 //Env
 require('dotenv').config();
@@ -36,7 +37,8 @@ app.use(passport.session());
 
 //Routes
 app.use('/', indexRouter);
-app.use('/', usersRouter)
+app.use('/', usersRouter);
+app.use('/', sessionsRouter);
 
 
 //App Listener

@@ -8,6 +8,7 @@
             <li>
               <% if (user) { %>
                  <a href="/logout"><i class="material-icons left">trending_flat</i>Log Out</a>
+                 <a href="#"><i class="material-icons left">trending_flat</i>Work Report</a>
                <% } else { %>
                 <a href="/auth/google"><i class="material-icons left">vpn_key</i>Login with Google</a>
               <% } %>
@@ -16,9 +17,20 @@
       </div>
     </nav>
   </div>
-  <header class="container">
-    <h2>Users</h2>
-  </header>
+  <div class="input-field col s12">
+    <form action="../sessions" method="POST">
+      <select name="siteName">
+        <option value="" disabled selected>Choose your option</option>
+        <option value="Lexington Market">Lexington Market</option>
+        <option value="Jones Falls Market">Jones Falls Market</option>
+        <option value="Food Truck">Food Truck</option>
+      </select>
+      <label>Materialize Select</label>
+      <input type="datetime-local" name="clockIn">
+      <input type="submit" class="waves-effect waves-light btn-large"><i class="material-icons left">cloud</i>Clock In</input>
+    </form>
+  </div>
+
 
   <%- include('../partials/footer') %>
 
