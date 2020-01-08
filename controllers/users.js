@@ -5,5 +5,5 @@ module.exports = {
 }
 
 function index(req, res) {
-    res.render('users/index');
+    res.render('users/index', {title: 'Remote Timecard!', user: req.user});
 }
