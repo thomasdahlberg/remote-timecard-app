@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect(process.DATABASE_URL || 'mongodb://localhost/remotetimecard', {
+mongoose.connect(process.env.DATABASE_URL || 'mongodb://localhost/remotetimecard', {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true 
