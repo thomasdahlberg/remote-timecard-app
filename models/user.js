@@ -5,7 +5,7 @@ const userSchema = new mongoose.Schema({
     googleId: String,
     email: String,
     avatarUrl: String,
-    session: [{type: Schema.Types.ObjectId, ref: 'Session'}],
+    sessions: [{type: Schema.Types.ObjectId, ref: 'Session'}],
     name: String,
     totalHours: Number,
     active: Boolean,
