@@ -10,6 +10,7 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const sessionsRouter = require('./routes/sessions');
 const jobsitesRouter = require('./routes/jobsites');
+const apisRouter = require('./routes/api');
 
 //Env
 require('dotenv').config();
@@ -30,7 +31,6 @@ app.use(methodOverride('_method'));
 app.use(express.static('public'));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
-app.use('/jquery', express.static('/node_modules/jquery/dist'));
 app.use(session({
     secret:'RemoteTimecard!',
     resave: false,
@@ -44,6 +44,7 @@ app.use('/', indexRouter);
 app.use('/', usersRouter);
 app.use('/', sessionsRouter);
 app.use('/jobsites', jobsitesRouter);
+app.use('/api', apisRouter);
 app.use(cors());
 
 

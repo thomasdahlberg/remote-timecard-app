@@ -40,3 +40,4 @@ if($('#session-submit').val() === 'Clock Out'){
 //     $('#search-results').append(`<td>${newJobsites[i].name}</td>`);
 //     }
 // }
+
