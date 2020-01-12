@@ -2,12 +2,12 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 
-const jobsiteSchema = new mongoose.Schema({
+const jobsiteSchema = new Schema({
     siteName: String,
     latitude: Number,
     longitude: Number,
     siteRadius: Number,
-    session: String,
+    sessions: [{type: Schema.Types.ObjectId, ref: 'Session'}],
     active: Boolean
 },{
     timestamps: true

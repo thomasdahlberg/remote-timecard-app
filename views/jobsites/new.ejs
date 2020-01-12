@@ -1,29 +1,15 @@
 <%- include('../partials/header') %>
-<div class="navbar-fixed">
-    <nav>
-      <div class="nav-wrapper purple">
-        <a href="" class="brand-logo left">Remote Timecard</a>
-        <ul class="right">
-            <li>
-              <% if (user) { %>
-                 <a href="/logout"><i class="material-icons left">trending_flat</i>Log Out</a>
-                 <a href="#"><i class="material-icons left">trending_flat</i>Work Report</a>
-               <% } else { %>
-                <a href="/auth/google"><i class="material-icons left">vpn_key</i>Login with Google</a>
-              <% } %>
-            </li>      
-          </ul>
-      </div>
-    </nav>
-  </div>
-  <br><br>
+
 <form>
     <label>Search for a New Jobsite</label>
-    <input type="text" id="siteSearch">  
-    <input type="submit" value="Search">
+    <input type="text" id="site-search-data">  
+    <input id="site-search-click" type="submit" value="Search">
 </form>
-<ul>
-    
-</ul>
+<table>
+  <thead>
+    <tr>
+      
+    </tr>
+  </thead>
 
 <%- include('../partials/footer') %>

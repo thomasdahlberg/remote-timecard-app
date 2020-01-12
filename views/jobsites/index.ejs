@@ -1,20 +1,23 @@
 <%- include('../partials/header') %>
-<div class="navbar-fixed">
-    <nav>
-      <div class="nav-wrapper purple">
-        <a href="" class="brand-logo left">Remote Timecard</a>
-        <ul class="right">
-            <li>
-              <% if (user) { %>
-                 <a href="/logout"><i class="material-icons left">trending_flat</i>Log Out</a>
-                 <a href="#"><i class="material-icons left">trending_flat</i>Work Report</a>
-               <% } else { %>
-                <a href="/auth/google"><i class="material-icons left">vpn_key</i>Login with Google</a>
-              <% } %>
-            </li>      
-          </ul>
-      </div>
-    </nav>
-  </div>
+<h2>All Jobsites</h2>
+<table id="list" class="highlight">
+    <thead>
+      <tr>
+        <th>Jobsite</th>
+        <th>Active?<br></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% jobsites.forEach(function(m) { %>
+        <tr>
+          <td><%= m.siteName %></td>
+          <td><%= m.active %></td>
+          <td><a href="/jobsites/<%= m._id %>">DETAILS</a></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>  
+<a href="jobsites/new"class="waves-effect waves-light btn-large">Add New Jobsite</a>
+
 
 <%- include('../partials/footer') %>

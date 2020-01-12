@@ -26,7 +26,7 @@ function show(req, res) {
 }
 
 function newJobsite(req, res) {
-    res.render('jobsites/new', {title: 'Add a New Jobsite'});
+    res.render('jobsites/new', {title: 'Add a New Jobsite', user: req.user});
 }
 
 function create(req, res){

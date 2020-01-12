@@ -4,9 +4,12 @@ const logger = require('morgan');
 const session = require('express-session');
 const passport = require('passport');
 const methodOverride = require('method-override');
+const cors = require('cors');
+
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const sessionsRouter = require('./routes/sessions');
+const jobsitesRouter = require('./routes/jobsites');
 
 //Env
 require('dotenv').config();
@@ -39,6 +42,8 @@ app.use(passport.session());
 app.use('/', indexRouter);
 app.use('/', usersRouter);
 app.use('/', sessionsRouter);
+app.use('/jobsites', jobsitesRouter);
+app.use(cors());
 
 
 //App Listener
