@@ -1,10 +1,12 @@
+const placesKey = 'AIzaSyCLkqHgj31aaaRkYXpQOyy7LRZ5mDcSr0Q'
+const placesURL = `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${userInput}&key=${placesKey}`
+const userInput
+
 $(document).ready(function(){
     $('select').formSelect();
 });
 
 
-let crds
-var x = document.getElementById('location');
 function success(pos){
 lat = pos.coords.latitude;
 long = pos.coords.longitude;
@@ -15,4 +17,6 @@ $('form').append(`<input type="text" name="latitude" value="${pos.coords.latitud
 console.log(`${lat}, ${long}`);
 }
 
-navigator.geolocation.getCurrentPosition(success);     
+navigator.geolocation.getCurrentPosition(success);  
+
+
