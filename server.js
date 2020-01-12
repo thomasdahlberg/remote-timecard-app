@@ -5,6 +5,7 @@ const session = require('express-session');
 const passport = require('passport');
 const methodOverride = require('method-override');
 const cors = require('cors');
+const port = process.env.PORT || 3000;
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
@@ -30,6 +31,7 @@ app.use(methodOverride('_method'));
 app.use(express.static('public'));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
+app.use('/jquery', express.static('/node_modules/jquery/dist'));
 app.use(session({
     secret:'RemoteTimecard!',
     resave: false,

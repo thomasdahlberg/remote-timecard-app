@@ -26,7 +26,7 @@ function show(req, res) {
 }
 
 function newJobsite(req, res) {
-    res.render('jobsites/new', {title: 'Add a New Jobsite', user: req.user});
+    res.render('jobsites/new', {title: 'Add a New Jobsite', user: req.user, placesKey: process.env.API_KEY});
 }
 
 function create(req, res){
