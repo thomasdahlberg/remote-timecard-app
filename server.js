@@ -1,5 +1,4 @@
 const express = require('express');
-const port = 3000;
 const logger = require('morgan');
 const session = require('express-session');
 const passport = require('passport');
