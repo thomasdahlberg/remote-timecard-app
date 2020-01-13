@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 
 const jobsiteSchema = new Schema({
     siteName: String,
+    address: String,
     latitude: Number,
     longitude: Number,
     siteRadius: Number,
