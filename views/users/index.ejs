@@ -1,15 +1,16 @@
 <%- include('../partials/header') %>
 
 <form action="../sessions" method="POST" id="location">
-      <input class="input-field col s12">
-        <select>
+      <div class="input-field col s12">
+        <select name="jobsite">
           <option value="" disabled selected>Choose your option</option>
-          <option value="1">Lexington Market</option>
-          <option value="2">Fadensonen</option>
-          <option value="3">Food Truck</option>
-          <option value="4">Waverly</option>
+          <% jobsites.forEach(function(m) { %>
+          <option name="jobsite" value="<%=m._id%>"><%=m.siteName%></option>
+          <% }); %>
         </select>
-        <label>Materialize Select</label>
+        <label>Select Your Job Site</label>
+      </div>
+      
         <input id="session-submit" type="submit" value="Clock In">
     </form>
 

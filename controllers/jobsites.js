@@ -30,7 +30,16 @@ function newJobsite(req, res) {
 }
 
 function create(req, res){
-    const jobsite = new Jobsite(req.body);
+    console.log(req.body);
+    const jobsite = new Jobsite({
+        siteName: req.body.name,
+        address: req.body.address,
+        latitude: req.body.latitude,
+        longitude: req.body.longitude,
+        siteRadius: 1,
+        sessions: [],
+        active: true
+    });
     jobsite.save(function(err) {
         if(err) return res.redirect('jobsites/new');
         res.redirect('/jobsites');

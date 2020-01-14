@@ -34,11 +34,11 @@ function showSearchResults(results) {
                                         <div class="collapsible-header"><strong>${newJobsites[i].siteName}</strong></div>
                                             <div class="collapsible-body"><span><strong>${newJobsites[i].address}</strong>
                                                 <br><br>
-                                                <form>
-                                                    <button class="btn waves-effect waves-light" type="submit" name="action">Add Jobsite
+                                                <form action="/jobsites" method="POST">
+                                                    <button class="btn waves-effect waves-light" type="submit">Add Jobsite
                                                         <i class="material-icons right">add</i>
                                                     </button>
-                                                    <input type="hidden" name="site-name" value="${newJobsites[i].siteName}">
+                                                    <input type="hidden" name="name" value="${newJobsites[i].siteName}">
                                                     <input type="hidden" name="address" value="${newJobsites[i].address}">
                                                     <input type="hidden" name="latitude" value="${newJobsites[i].latitude}">
                                                     <input type="hidden" name="longitude" value="${newJobsites[i].longitude}">

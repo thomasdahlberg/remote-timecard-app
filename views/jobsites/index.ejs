@@ -1,22 +1,18 @@
 <%- include('../partials/header') %>
 <h2>All Jobsites</h2>
-<table id="list" class="highlight">
-    <thead>
-      <tr>
-        <th>Jobsite</th>
-        <th>Active?<br></th>
-      </tr>
-    </thead>
-    <tbody>
+<ul class="collapsible">
       <% jobsites.forEach(function(m) { %>
-        <tr>
-          <td><%= m.siteName %></td>
-          <td><%= m.active %></td>
-          <td><a href="/jobsites/<%= m._id %>">DETAILS</a></td>
-        </tr>
+        <li class="sites">
+          <div class="collapsible-header"><strong><%=m.siteName%></strong></div>
+          <div class="collapsible-body">
+            <div><strong><%=m.address%></strong></div>
+            <div><strong><%=m.latitude%></strong></div>
+            <div><strong><%=m.longitude%></strong></div>
+            <div><strong><%=m.siteRadius%></strong></div>
+            <div><strong><%=m.active%></strong></div>
+          </div>
         <% }); %>
-      </tbody>
-    </table>  
+      </ul>
 <a href="jobsites/new"class="waves-effect waves-light btn-large">Add New Jobsite</a>
 
 

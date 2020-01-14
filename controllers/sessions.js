@@ -7,9 +7,10 @@ module.exports = {
 }
 
 function create(req, res) {
-    // console.log(req.body)
+    console.log(req.body.jobsite);
     session = new Session({
         user: req.user._id,
+        jobsite: req.body.jobsite,
         clockIn: {
             timePunch: new Date(),
             latitude: Number(req.body.latitude),
