@@ -6,7 +6,8 @@ const timeCardValidationSchema = new mongoose.Schema({
     timePunch: Date,
     latitude: Number,
     longitude: Number,
-    verfied: Boolean
+    proximity: Number,
+    verified: Boolean
 },{
     timestamps: true
 });

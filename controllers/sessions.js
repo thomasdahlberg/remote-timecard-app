@@ -1,6 +1,7 @@
 const Session = require('../models/session');
 const Jobsite = require('../models/jobsite');
 const User = require('../models/user');
+let verification;
 
 module.exports = {
     index,
@@ -8,26 +9,45 @@ module.exports = {
 }
 
 function create(req, res) {
-    console.log(req.body.jobsite);
-    session = new Session({
+    let clockLat = Number(req.body.latitude);
+    let clockLon = Number(req.body.longitude);
+    let site = req.body.jobsite
+    // console.log(site);
+    Jobsite.findById(site, function(err, jobsite){
+        let jobLat = Number(jobsite.latitude);
+        // console.log(jobsite);
+        // console.log(`ERROR: ${err}`);
+        let jobLon = Number(jobsite.longitude);
+        let distanceClocked = distanceMath(jobLat,jobLon,clockLat,clockLon);
+        console.log(`DISTANCE: ${distanceClocked}`);
+        proximityVerification(jobsite.siteRadius,distanceClocked);
+        session = new Session({
         user: req.user._id,
         jobsite: req.body.jobsite,
         punchClock: {
             timePunch: new Date(),
             latitude: Number(req.body.latitude),
-            longitude: Number(req.body.longitude)
-        }
-    });
-    console.log(session);
-    session.save(function(err) {
-        if(err) return res.redirect('/');
-        User.findById(req.user._id, function(err, user) {
-            user.sessions.push(session._id);
-            user.save()
-            console.log(user);
+            longitude: Number(req.body.longitude),
+            verified: verification,
+            proximity: distanceClocked
+            }
         });
+        console.log(session);
+        session.save(function(err) {
+            if(err) return res.redirect('/');
+            User.findById(req.user._id, function(err, user) {
+                user.sessions.push(session._id);
+                user.save()
+                Jobsite.findById(site, function(err, jobsite){
+                    jobsite.sessions.push(session._id);
+                    jobsite.save();
+                    console.log(jobsite);
+                });
+                console.log(user);
+            });
         res.redirect('/users');
     });
+});
 }
 
 function index(req, res){
@@ -35,3 +55,23 @@ function index(req, res){
         res.render('sessions/index', {title: 'Sessions Report', user: req.user, sessions});    
     });
 }
+
+    
+function distanceMath(lat1, lon1, lat2, lon2) {
+    var p = 0.017453292519943295;    
+    var c = Math.cos;
+    var a = 0.5 - c((lat2 - lat1) * p)/2 + 
+            c(lat1 * p) * c(lat2 * p) * 
+            (1 - c((lon2 - lon1) * p))/2;
+  
+    return 12742 * Math.asin(Math.sqrt(a));
+  }
+
+  function proximityVerification(siteRadius, proximity){
+      if(proximity <= siteRadius){
+          verification = true;
+      } else {
+          verification = false;
+      }
+      console.log(verification);
+  }
