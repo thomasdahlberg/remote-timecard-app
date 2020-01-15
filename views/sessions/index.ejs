@@ -1,0 +1,16 @@
+<%- include('../partials/header') %>
+
+<h2>Sessions</h2>
+<ul class="collapsible">
+      <% sessions.forEach(function(m) { %>
+        <li class="sites">
+          <div class="collapsible-header"><strong><%=m.jobsite%>: </strong></div>
+          <div class="collapsible-body">
+            <div><strong>Geolocation Verified: </strong></div>
+          </div>
+        <% }); %>
+      </ul>
+
+
+
+<%- include('../partials/footer') %>

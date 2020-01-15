@@ -42,7 +42,7 @@ app.use(passport.session());
 //Routes
 app.use('/', indexRouter);
 app.use('/', usersRouter);
-app.use('/', sessionsRouter);
+app.use('/sessions', sessionsRouter);
 app.use('/jobsites', jobsitesRouter);
 app.use('/api', apisRouter);
 app.use(cors());

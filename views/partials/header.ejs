@@ -23,16 +23,17 @@
 </head>
 <body>
   <main>
-  <% if(user){ %>
-    <% if(user.adminUser === true) { %>
     <!-- Dropdown Structure -->
     <ul id="dropdown1" class="dropdown-content">
-      <li><a href="/jobsites">Jobsites</a></li>
       <li><a href="/sessions">Sessions</a></li>
       <li><a href="/users">Time Punch</a></li>
+      <% if(user){ %>
+        <% if(user.adminUser === true) { %>
+      <li><a href="/jobsites">Jobsites</a></li>
+      <% } %>
+      <% } %>
+    
     </ul>
-    <% } %>
-  <% } %>
     <nav>
       <div class="nav-wrapper">
         <a href="#!" class="brand-logo"><i class="material-icons">access_time</i>Remote Timecard</a>

@@ -3,6 +3,7 @@ const Jobsite = require('../models/jobsite');
 const User = require('../models/user');
 
 module.exports = {
+    index,
     create
 }
 
@@ -11,7 +12,7 @@ function create(req, res) {
     session = new Session({
         user: req.user._id,
         jobsite: req.body.jobsite,
-        clockIn: {
+        punchClock: {
             timePunch: new Date(),
             latitude: Number(req.body.latitude),
             longitude: Number(req.body.longitude)
@@ -29,3 +30,8 @@ function create(req, res) {
     });
 }
 
+function index(req, res){
+    Session.find({}, function(err, sessions){
+        res.render('sessions/index', {title: 'Sessions Report', user: req.user, sessions});    
+    });
+}
