@@ -15,6 +15,7 @@ const timeCardValidationSchema = new mongoose.Schema({
 const sessionSchema = new mongoose.Schema({
     user: {type: Schema.Types.ObjectId, ref: 'User'},
     jobsite: {type: Schema.Types.ObjectId, ref: 'Jobsite'},
+    siteName: String,
     punchClock: timeCardValidationSchema,
 },{
     timestamps: true

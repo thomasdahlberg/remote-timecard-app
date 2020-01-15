@@ -19,11 +19,12 @@ function create(req, res) {
         // console.log(`ERROR: ${err}`);
         let jobLon = Number(jobsite.longitude);
         let distanceClocked = distanceMath(jobLat,jobLon,clockLat,clockLon);
-        console.log(`DISTANCE: ${distanceClocked}`);
+        // console.log(`DISTANCE: ${distanceClocked}`);
         proximityVerification(jobsite.siteRadius,distanceClocked);
         session = new Session({
         user: req.user._id,
         jobsite: req.body.jobsite,
+        siteName: jobsite.siteName,
         punchClock: {
             timePunch: new Date(),
             latitude: Number(req.body.latitude),
@@ -32,7 +33,7 @@ function create(req, res) {
             proximity: distanceClocked
             }
         });
-        console.log(session);
+        // console.log(session);
         session.save(function(err) {
             if(err) return res.redirect('/');
             User.findById(req.user._id, function(err, user) {
@@ -41,9 +42,9 @@ function create(req, res) {
                 Jobsite.findById(site, function(err, jobsite){
                     jobsite.sessions.push(session._id);
                     jobsite.save();
-                    console.log(jobsite);
+                    // console.log(jobsite);
                 });
-                console.log(user);
+                // console.log(user);
             });
         res.redirect('/users');
     });
@@ -52,15 +53,17 @@ function create(req, res) {
 
 function index(req, res){
     Session.find({}, function(err, sessions){
-        res.render('sessions/index', {title: 'Sessions Report', user: req.user, sessions});    
+        Jobsite.findById(session.jobsite, function(err, jobsite){
+            res.render('sessions/index', {title: 'Sessions Report', user: req.user, sessions, jobsite});    
+        })
     });
 }
 
     
 function distanceMath(lat1, lon1, lat2, lon2) {
-    var p = 0.017453292519943295;    
-    var c = Math.cos;
-    var a = 0.5 - c((lat2 - lat1) * p)/2 + 
+    let p = 0.017453292519943295;    
+    let c = Math.cos;
+    let a = 0.5 - c((lat2 - lat1) * p)/2 + 
             c(lat1 * p) * c(lat2 * p) * 
             (1 - c((lon2 - lon1) * p))/2;
   
@@ -73,5 +76,5 @@ function distanceMath(lat1, lon1, lat2, lon2) {
       } else {
           verification = false;
       }
-      console.log(verification);
+    //   console.log(verification);
   }
