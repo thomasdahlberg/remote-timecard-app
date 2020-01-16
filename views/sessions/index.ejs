@@ -1,9 +1,22 @@
 <%- include('../partials/header') %>
 
+<% if(user.adminUser === true) { %>
+<h2>Sessions</h2>
+<ul class="collapsible">
+  <% sessions.forEach(function(m) { %>
+    <li class="sessions">
+      <div class="collapsible-header"><strong><%=m.userName%>: <%=m.siteName%> - <%=m.punchClock.timePunch%></strong></div>
+      <div class="collapsible-body">
+        <div><strong>Geolocation Verified: <%=m.punchClock.verified%></strong></div>
+        <div><strong>Proximity: <%=m.punchClock.proximity%>km</strong></div>
+      </div>
+    <% }); %>
+  </ul>
+<% } else { %>
 <h2>Sessions</h2>
 <ul class="collapsible">
       <% sessions.forEach(function(m) { %>
-        <li class="sites">
+        <li class="sessions">
           <div class="collapsible-header"><strong><%=m.siteName%>: <%=m.punchClock.timePunch%></strong></div>
           <div class="collapsible-body">
             <div><strong>Geolocation Verified: <%=m.punchClock.verified%></strong></div>
@@ -11,7 +24,5 @@
           </div>
         <% }); %>
       </ul>
-
-
-
+  <% } %>
 <%- include('../partials/footer') %>

@@ -23,6 +23,7 @@ function create(req, res) {
         proximityVerification(jobsite.siteRadius,distanceClocked);
         session = new Session({
         user: req.user._id,
+        userName: req.user.name,
         jobsite: req.body.jobsite,
         siteName: jobsite.siteName,
         punchClock: {
@@ -46,19 +47,25 @@ function create(req, res) {
                 });
                 // console.log(user);
             });
-        res.redirect('/users');
+        res.redirect('/sessions');
     });
 });
 }
 
 function index(req, res){
-    Session.find({}, function(err, sessions){
-        Jobsite.findById(session.jobsite, function(err, jobsite){
-            res.render('sessions/index', {title: 'Sessions Report', user: req.user, sessions, jobsite});    
-        })
-    });
+    console.log(req.user);
+    if(req.user.adminUser === true){
+        Session.find({}, function(err, sessions){
+            res.render('sessions/index', {title: 'Sessions Reports', user: req.user, sessions,});
+        });
+    } else {
+        Session.find({user: req.user}, function(err, sessions){
+        // Jobsite.findById(session.jobsite, function(err, jobsite){
+            res.render('sessions/index', {title: 'Sessions Report', user: req.user, sessions});    
+        
+        });
+    }
 }
-
     
 function distanceMath(lat1, lon1, lat2, lon2) {
     let p = 0.017453292519943295;    

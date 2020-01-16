@@ -5,7 +5,8 @@
         <select name="jobsite">
           <option value="" disabled selected>Choose your option</option>
           <% jobsites.forEach(function(m) { %>
-          <option name="jobsite" value="<%=m._id%>"><%=m.siteName%></option>
+          <option name="jobsite" value="<%=m._id%>">
+          <%=m.siteName%></option>
           <% }); %>
         </select>
         <label>Select Your Job Site</label>
