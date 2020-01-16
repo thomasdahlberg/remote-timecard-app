@@ -5,7 +5,16 @@ let verification;
 
 module.exports = {
     index,
-    create
+    create,
+    delete: deleteOne
+}
+
+function deleteOne(req, res) {
+    console.log(req);
+    Session.findOneAndDelete({_id: req.params.id}, function(err){
+        if(err) return console.log(err);
+        res.redirect('../../sessions');
+    })
 }
 
 function create(req, res) {

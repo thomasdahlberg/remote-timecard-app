@@ -7,6 +7,8 @@ router.get('/:id', isLoggedIn, jobsitesCtrl.show)
 router.post('/', isLoggedIn, jobsitesCtrl.create);
 router.get('/:id/edit', isLoggedIn, jobsitesCtrl.edit);
 router.put('/:id', isLoggedIn, jobsitesCtrl.update);
+router.delete('/:id', isLoggedIn, jobsitesCtrl.delete);
+
 
 function isLoggedIn(req, res, next) {
     if (req.isAuthenticated()) return next();

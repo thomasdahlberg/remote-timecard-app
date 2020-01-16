@@ -4,11 +4,12 @@ const Jobsite = require('../models/jobsite');
 
 module.exports = {
     index,
-    show,
     new: newJobsite,
+    show,
     create,
     edit: editJobsite,
-    update
+    update,
+    delete: deleteOne
 }
 
 function index(req, res) {
@@ -58,5 +59,13 @@ function update(req, res){
     Jobsite.findByIdAndUpdate(req.params.id, req.body, {new: true}, function(err, updatedJobsite){
         if(err) return res.redirect('jobsites/edit');
         res.redirect('jobsites/show');
+    })
+}
+
+function deleteOne(req, res) {
+    console.log(req);
+    Jobsite.findOneAndDelete({_id: req.params.id}, function(err){
+        if(err) return console.log(err);
+        res.redirect('../../jobsites');
     })
 }
