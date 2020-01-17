@@ -1,24 +1,24 @@
 <%- include('../partials/header') %>
-<h2>All Jobsites</h2>
+<h2>All Job Sites</h2>
 <ul class="collapsible">
       <% jobsites.forEach(function(m) { %>
         <li class="sites">
-          <div class="collapsible-header"><strong><%=m.siteName%></strong></div>
+          <div class="collapsible-header"><h5><strong><%=m.siteName%></h5></strong></div>
           <div class="collapsible-body">
-            <div><strong><%=m.address%></strong></div>
-            <div><strong><%=m.latitude%></strong></div>
-            <div><strong><%=m.longitude%></strong></div>
-            <div><strong><%=m.siteRadius%></strong></div>
-            <div><strong><%=m.active%></strong></div>
-            <form action="/jobsites/<%=m._id%>" method="GET">
-              <button class="btn waves-effect waves-light" type="submit" value="Edit" name="action">
-            </form>    
-            <form action="/jobsites/<%=m._id%>/?_method=DELETE" class="delete-form" method="POST">
-              <input type="hidden" value="<%m._id%>">
-              <button class="btn waves-effect waves-light" type="submit" value="Delete" name="action">
-                <i class="material-icons right">delete</i>
-              </button>
-            </form>
+            <div><h6><strong><em><%=m.address%></em></strong></h6></div>
+            <br>
+            <div><strong>Site Radius: </strong><%=m.siteRadius%> km</div>
+            <div><strong>Active Job Site?: </strong><%=m.active%></div>
+            <br>
+            <div class="container">
+              <form action="/jobsites/<%=m._id%>" method="GET">
+                <button type="submit" name="action" class="btn-floating btn-large waves-effect waves-light green"><i class="material-icons">edit</i></button>
+              </form>   
+              <form action="/jobsites/<%=m._id%>/?_method=DELETE" class="delete-form" method="POST">
+                <input type="hidden" value="<%m._id%>">
+                <button type="submit" name="action" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">delete</i></button>
+              </form>
+            </div>
           </div>
         <% }); %>
       </ul>

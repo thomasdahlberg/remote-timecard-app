@@ -7,7 +7,6 @@ const cors = require('cors');
 const port = process.env.PORT || 3000;
 
 const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
 const sessionsRouter = require('./routes/sessions');
 const jobsitesRouter = require('./routes/jobsites');
 const apisRouter = require('./routes/api');
@@ -41,7 +40,6 @@ app.use(passport.session());
 
 //Routes
 app.use('/', indexRouter);
-// app.use('/', usersRouter);
 app.use('/sessions', sessionsRouter);
 app.use('/jobsites', jobsitesRouter);
 app.use('/api', apisRouter);

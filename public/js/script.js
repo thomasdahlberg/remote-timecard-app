@@ -20,10 +20,9 @@ $(document).ready(function(){
 
 
 function success(pos){
-$('form').append(`<input type="text" name="latitude" value="${pos.coords.latitude}" readonly><br>
-                <label>Latitude</label><br>
-                <input type="text" name="longitude" value="${pos.coords.longitude}" readonly><br>
-                <label>Longitude</label>`);
+$('#location').append(`<input type="hidden" name="latitude" value="${pos.coords.latitude}" readonly><br>
+                <input type="hidden" name="longitude" value="${pos.coords.longitude}" readonly><br>
+                <label id="verified-green">Location Captured!</label>`);
 }
 
 function showSearchResults(results) {
@@ -52,13 +51,11 @@ function showSearchResults(results) {
     }
 }
  
-if($('#session-submit').val() === 'Clock In'){
+if($('#session-submit').val('clock')){
     navigator.geolocation.getCurrentPosition(success);  
 }
 
-if($('#session-submit').val() === 'Clock Out'){
-    navigator.geolocation.getCurrentPosition(success);  
-}
+
 
 $('#site-search-click').on('click', (event)=> {
     event.preventDefault();
