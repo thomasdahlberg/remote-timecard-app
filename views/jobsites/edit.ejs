@@ -6,11 +6,12 @@
   <p><strong>Latitude: </strong><%=jobsite.latitude%></p>
   <p><strong>Longitude: </strong><%=jobsite.longitude%></p>
 <form action="/jobsites/<%=jobsite._id%>/?_method=PUT" method="POST">
-  <input type ="number" name="siteRadius" value="<%=jobsite.siteRadius%>">
+  <label>Site Radius (in km)</label>
+  <input type ="number" name="radius" value="<%=jobsite.siteRadius%>">
   <%if(jobsite.active === true) { %>
   <p>
       <label>
-          <input type="checkbox" checked="checked" name="active" value="true"/>
+          <input type="checkbox" checked="checked" name="activeinput" value="true"/>
           <span>Active Job Site?</span>
       </label>
   </p>

@@ -1,5 +1,6 @@
 const Session = require('../models/session');
 const Jobsite = require('../models/jobsite');
+let activeinput;
 
 
 module.exports = {
@@ -7,7 +8,7 @@ module.exports = {
     new: newJobsite,
     create,
     edit: editJobsite,
-    update,
+    update: updateOne,
     delete: deleteOne
 }
 
@@ -46,12 +47,26 @@ function editJobsite(req, res) {
     });
 }
 
-function update(req, res){
-    Jobsite.findByIdAndUpdate(req.params.id, req.body, {new: true}, function(err, updatedJobsite){
-        if(err) return res.redirect('jobsites/edit');
-        res.redirect('jobsites/show');
-    })
+function updateOne(req, res) {
+    console.log(req.body);
+    console.log(req.params.id);
+    if(req.body.activeinput){
+        activeinput = true;
+    } else {
+        activeinput = false;
+    }
+    Jobsite.findByIdAndUpdate(req.params.id, {
+            // latitude: Number(req.body.latitude),
+            // longitude: Number(req.body.longitude),
+            siteRadius: req.body.radius,
+            active: activeinput
+        }, function(err, updatedJobsite){
+        console.log(updatedJobsite);
+        if(err) return console.log(err);
+        res.redirect('../../jobsites')
+    });
 }
+
 
 function deleteOne(req, res) {
     console.log(req);
