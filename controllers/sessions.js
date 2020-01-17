@@ -24,7 +24,9 @@ function editView(req, res) {
 }
 
 function updateOne(req, res) {
-    
+    console.log(req.body);
+    // Session.findByIdAndUpdate(req.params.id, req.body, {new: true}, function(err, updatedPuppy){
+ 
 }
 
 function deleteOne(req, res) {

@@ -6,19 +6,19 @@
     <p><strong>Latitude: </strong><%=session.punchClock.latitude%></p>
     <p><strong>Longitude: </strong><%=session.punchClock.longitude%></p>
     <p><strong>Proximity: </strong><%=session.punchClock.proximity%>km</p>
-<form action="../" method="PUT">
-    <input type="datetime-local" id="time-punch" name="time-punch" value="<%=formattedDate%>">
+<form action="/sessions/<%=session._id%>/?_method=PUT" method="POST">
+    <input type="datetime-local" id="time-punch" name="time" value="<%=formattedDate%>">
     <%if(session.punchClock.verified === true) { %>
     <p>
         <label>
-            <input type="checkbox" checked="checked"/>
+            <input type="checkbox" checked="checked" name="verified" value="true"/>
             <span>Verified?</span>
         </label>
     </p>
     <% } else { %>
     <p>
         <label>
-            <input type="checkbox" />
+            <input type="checkbox" name="verified" value="true"/>
             <span>Verified?</span>
         </label>
     </p>    
