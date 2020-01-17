@@ -3,6 +3,7 @@
 <ul class="collapsible">
       <% jobsites.forEach(function(m) { %>
         <li class="sites">
+          <% if(m.active === true) { %>
           <div class="collapsible-header"><h5><strong><%=m.siteName%></h5></strong></div>
           <div class="collapsible-body">
             <div><h6><strong><em><%=m.address%></em></strong></h6></div>
@@ -11,6 +12,16 @@
             <div><strong>Active Job Site?: </strong><%=m.active%></div>
             <br>
             <div class="container">
+          <% } else { %>
+          <div class="collapsible-header"><h5 class="red-text"><%=m.siteName%></h5></div>
+          <div class="collapsible-body">
+            <div><h6><strong><em><%=m.address%></em></strong></h6></div>
+            <br>
+            <div><strong>Site Radius: </strong><%=m.siteRadius%> km</div>
+            <div><span class="red-text"><strong>Active Job Site?: </strong><%=m.active%></span></div>
+            <br>
+            <div class="container">
+              <% } %>
               <form action="/jobsites/<%=m._id%>" method="GET">
                 <button type="submit" name="action" class="btn-floating btn-large waves-effect waves-light green"><i class="material-icons">edit</i></button>
               </form>   
