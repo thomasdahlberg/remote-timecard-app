@@ -6,7 +6,25 @@ let verification;
 module.exports = {
     index,
     create,
-    delete: deleteOne
+    delete: deleteOne,
+    edit: editView,
+    update: updateOne
+}
+
+function editView(req, res) {
+    Session.findById(req.params.id, function(err, session){
+        let sessionDate = session.punchClock.timePunch;
+        let formattedMonth = sessionDate.getMonth() + 1;
+        if(formattedMonth < 10) {
+            formattedMonth = formattedMonth.toString().padStart(2,'0');
+        };
+        let formattedDate = `${sessionDate.getFullYear()}-${formattedMonth}-${sessionDate.getDate().toString().padStart(2,'0')}T${sessionDate.getHours().toString().padStart(2, '0')}:${sessionDate.getMinutes().toString().padStart(2, '0')}`;
+        res.render('sessions/edit', {title: 'Update Jobsite',user: req.user, session, formattedDate});
+    });
+}
+
+function updateOne(req, res) {
+    
 }
 
 function deleteOne(req, res) {
@@ -43,7 +61,7 @@ function create(req, res) {
             proximity: distanceClocked
             }
         });
-        // console.log(session);
+        console.log(session);
         session.save(function(err) {
             if(err) return res.redirect('/');
             User.findById(req.user._id, function(err, user) {

@@ -14,6 +14,8 @@ $(document).ready(function(){
     $(".dropdown-trigger").dropdown();
     $('.collapsible').collapsible();
     $('.fixed-action-btn').floatingActionButton();
+    $('#time-punch').focus();
+    $('#time-punch').select();
 });
 
 
