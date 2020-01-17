@@ -1,7 +1,7 @@
 const Session = require('../models/session');
 const Jobsite = require('../models/jobsite');
 const User = require('../models/user');
-let verification;
+let verification, verify;
 
 module.exports = {
     index,
@@ -25,8 +25,24 @@ function editView(req, res) {
 
 function updateOne(req, res) {
     console.log(req.body);
-    // Session.findByIdAndUpdate(req.params.id, req.body, {new: true}, function(err, updatedPuppy){
- 
+    if(req.body.verified){
+        verify = true;
+    } else {
+        verify = false
+    }
+    Session.findByIdAndUpdate(req.params.id, {
+        punchClock: {
+            timePunch: req.body.time,
+            verified: verify,
+            latitude: Number(req.body.latitude),
+            longitude: Number(req.body.longitude),
+            proximity: req.body.proximity
+        }
+    }, function(err, updatedSession){
+        console.log(updatedSession);
+        if(err) return console.log(err);
+        res.redirect('../../sessions')
+    });
 }
 
 function deleteOne(req, res) {

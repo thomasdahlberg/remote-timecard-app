@@ -8,6 +8,9 @@
     <p><strong>Proximity: </strong><%=session.punchClock.proximity%>km</p>
 <form action="/sessions/<%=session._id%>/?_method=PUT" method="POST">
     <input type="datetime-local" id="time-punch" name="time" value="<%=formattedDate%>">
+    <input type ="hidden" name="latitude" value="<%=session.punchClock.latitude%>">
+    <input type ="hidden" name="longitude" value="<%=session.punchClock.longitude%>">
+    <input type ="hidden" name="proximity" value="<%=session.punchClock.proximity%>">
     <%if(session.punchClock.verified === true) { %>
     <p>
         <label>
