@@ -10,6 +10,9 @@
             <div><strong><%=m.longitude%></strong></div>
             <div><strong><%=m.siteRadius%></strong></div>
             <div><strong><%=m.active%></strong></div>
+            <form action="/jobsites/<%=m._id%>" method="GET">
+              <button class="btn waves-effect waves-light" type="submit" value="Edit" name="action">
+            </form>    
             <form action="/jobsites/<%=m._id%>/?_method=DELETE" class="delete-form" method="POST">
               <input type="hidden" value="<%m._id%>">
               <button class="btn waves-effect waves-light" type="submit" value="Delete" name="action">

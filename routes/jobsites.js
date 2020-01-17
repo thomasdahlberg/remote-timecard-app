@@ -3,9 +3,8 @@ const jobsitesCtrl = require('../controllers/jobsites');
 
 router.get('/', isLoggedIn, isAdmin, jobsitesCtrl.index);
 router.get('/new', isLoggedIn, isAdmin, jobsitesCtrl.new);
-router.get('/:id', isLoggedIn, isAdmin, jobsitesCtrl.show)
 router.post('/', isLoggedIn, isAdmin, jobsitesCtrl.create);
-router.get('/:id/edit', isLoggedIn, isAdmin, jobsitesCtrl.edit);
+router.get('/:id', isLoggedIn, isAdmin, jobsitesCtrl.edit);
 router.put('/:id', isLoggedIn, isAdmin, jobsitesCtrl.update);
 router.delete('/:id', isLoggedIn, isAdmin, jobsitesCtrl.delete);
 

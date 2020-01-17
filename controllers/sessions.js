@@ -19,7 +19,7 @@ function editView(req, res) {
             formattedMonth = formattedMonth.toString().padStart(2,'0');
         };
         let formattedDate = `${sessionDate.getFullYear()}-${formattedMonth}-${sessionDate.getDate().toString().padStart(2,'0')}T${sessionDate.getHours().toString().padStart(2, '0')}:${sessionDate.getMinutes().toString().padStart(2, '0')}`;
-        res.render('sessions/edit', {title: 'Update Jobsite',user: req.user, session, formattedDate});
+        res.render('sessions/edit', {title: 'Update Session',user: req.user, session, formattedDate});
     });
 }
 

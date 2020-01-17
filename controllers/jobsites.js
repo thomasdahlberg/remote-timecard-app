@@ -5,7 +5,6 @@ const Jobsite = require('../models/jobsite');
 module.exports = {
     index,
     new: newJobsite,
-    show,
     create,
     edit: editJobsite,
     update,
@@ -15,14 +14,6 @@ module.exports = {
 function index(req, res) {
     Jobsite.find({}, function(err, jobsites){
         res.render('jobsites/index', {title: 'Jobsites', user: req.user, jobsites});    
-    });
-}
-
-function show(req, res) {
-    Jobsite.findById(req.params.id, function(err, jobsite) {
-        Session.find({jobsite: jobsite._id}, function(err, sessions){
-            res.render('jobsites/show', {title: 'Jobsite Details', sessions, jobsite})
-        });
     });
 }
 
@@ -50,7 +41,7 @@ function create(req, res){
 function editJobsite(req, res) {
     Jobsite.findById(req.params.id, function(err, jobsite) {
         Session.find({jobsite: jobsite._id}, function(err, sessions){
-            res.render('jobsites/edit', {title: 'Update Jobsite', sessions, jobsite})
+            res.render('jobsites/edit', {title: 'Update Jobsite', user: req.user, sessions, jobsite})
         });
     });
 }
