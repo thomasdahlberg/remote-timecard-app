@@ -5,10 +5,17 @@ let verification, verify;
 
 module.exports = {
     index,
+    new: newSession,
     create,
     delete: deleteOne,
     edit: editView,
     update: updateOne
+}
+
+function newSession(req, res) {
+    Jobsite.find({}, function(err, jobsites){
+        res.render('sessions/new', {title: 'Remote Timecard!', user: req.user, jobsites});    
+    });
 }
 
 function editView(req, res) {

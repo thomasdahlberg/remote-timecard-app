@@ -1,12 +1,12 @@
-const User = require('../models/user');
-const Jobsite = require('../models/jobsite');
+// const User = require('../models/user');
+// const Jobsite = require('../models/jobsite');
 
-module.exports = {
-    index,
-}
+// module.exports = {
+//     index,
+// }
 
-function index(req, res) {
-    Jobsite.find({}, function(err, jobsites){
-        res.render('users/index', {title: 'Remote Timecard!', user: req.user, jobsites});    
-    });
-}
+// function newSession(req, res) {
+//     Jobsite.find({}, function(err, jobsites){
+//         res.render('users/index', {title: 'Remote Timecard!', user: req.user, jobsites});    
+//     });
+// }

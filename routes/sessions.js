@@ -2,6 +2,7 @@ const router = require('express').Router();
 const sessionsCtrl = require('../controllers/sessions');
 
 router.get('/', isLoggedIn, sessionsCtrl.index)
+router.get('/new', isLoggedIn, sessionsCtrl.new);
 router.post('/', isLoggedIn, sessionsCtrl.create);
 router.get('/:id', isLoggedIn, isAdmin, sessionsCtrl.edit);
 router.put('/:id', isLoggedIn, isAdmin, sessionsCtrl.update);
