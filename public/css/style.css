@@ -55,6 +55,6 @@ h2 {
     text-align: center;
 }
 
-/* li.sessions{
-    visibility: collapse;
-} */
+#site-search-click{
+    margin-left: 2em;
+}

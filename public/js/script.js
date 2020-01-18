@@ -36,7 +36,7 @@ function showSearchResults(results) {
                                             <div class="collapsible-body"><span><strong>${newJobsites[i].address}</strong>
                                                 <br><br>
                                                 <form action="/jobsites" method="POST">
-                                                    <button class="btn waves-effect waves-light" type="submit">Add Jobsite
+                                                    <button class="btn waves-effect waves-light green" type="submit">Add Jobsite
                                                         <i class="material-icons right">add</i>
                                                     </button>
                                                     <input type="hidden" name="name" value="${newJobsites[i].siteName}">
