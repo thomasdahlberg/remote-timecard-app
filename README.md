@@ -56,8 +56,8 @@ Job Sites Views:
 
 
 Sessions Report Views:
-![Image](public/images/aSessions1.png)
-![Image](public/images/aSessionsEdit.png)
+![Image](public/images/aSession1.png)
+![Image](public/images/aSessionEdit.png)
 
 
 
