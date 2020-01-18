@@ -8,3 +8,17 @@
     color: green;
 }
 
+li.active > div{
+    background-color: cornsilk;
+    color: #1976d2;
+}
+
+strong{
+    font-weight: bold;
+}
+
+.card-panel{
+    background-color: cornsilk;
+    width: 300px;
+}
+

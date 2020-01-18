@@ -1,19 +1,22 @@
 <%- include('../partials/header') %>
 
-<form action="../sessions" method="POST" id="location">
-      <div class="input-field col s12">
-        <select name="jobsite">
-          <option value="" disabled selected>Choose your option</option>
-          <% jobsites.forEach(function(m) { %>
-          <option name="jobsite" value="<%=m._id%>">
-          <%=m.siteName%></option>
-          <% }); %>
-        </select>
-        <label>Select Your Job Site</label>
-      </div>
-      <button value="clock" id="session-submit" type="submit" class="waves-effect waves-light btn-large blue" value="Clock In"><i class="material-icons right">alarm_on</i>Time Punch</button>
-        <!-- <input id="session-submit" type="submit" value="Clock In"> -->
-    </form>
+<div class="container">
+  <form action="../sessions" method="POST" id="location">
+        <div class="input-field col s12">
+          <select name="jobsite">
+            <option value="" disabled selected>Choose Your Job Site</option>
+            <% jobsites.forEach(function(m) { %>
+              <% if(m.active === true) { %>
+            <option name="jobsite" value="<%=m._id%>">
+            <%=m.siteName%></option>
+              <% } %>
+            <% }); %>
+          </select>
+          <label>Select Your Job Site</label>
+        </div>
+        <button value="clock" id="session-submit" type="submit" class="waves-effect waves-light btn-large blue" value="Clock In"><i class="material-icons right">alarm_on</i>Time Punch</button>
+      </form>
+    </div>
 
   <%- include('../partials/footer') %>
 

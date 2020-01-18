@@ -1,34 +1,35 @@
 <%- include('../partials/header') %>
-
-<div>
-    <h5><%=session.userName%></h5>
-    <h6><em><%=session.siteName%></em></h6>
-    <p><strong>Latitude: </strong><%=session.punchClock.latitude%></p>
-    <p><strong>Longitude: </strong><%=session.punchClock.longitude%></p>
-    <p><strong>Proximity: </strong><%=session.punchClock.proximity%>km</p>
-<form action="/sessions/<%=session._id%>/?_method=PUT" method="POST">
-    <input type="datetime-local" id="time-punch" name="time" value="<%=formattedDate%>">
-    <input type ="hidden" name="latitude" value="<%=session.punchClock.latitude%>">
-    <input type ="hidden" name="longitude" value="<%=session.punchClock.longitude%>">
-    <input type ="hidden" name="proximity" value="<%=session.punchClock.proximity%>">
-    <%if(session.punchClock.verified === true) { %>
-    <p>
-        <label>
-            <input type="checkbox" checked="checked" name="verified" value="true"/>
-            <span>Verified?</span>
-        </label>
-    </p>
-    <% } else { %>
-    <p>
-        <label>
-            <input type="checkbox" name="verified" value="true"/>
-            <span>Verified?</span>
-        </label>
-    </p>    
-    <% } %>
-    <br>
-    <button class="btn waves-effect waves-light" type="submit" name="action">Update</button>
-</form>
+<div class="container">
+    <div class="card-panel">
+        <h5><%=session.userName%></h5>
+        <h6><em><%=session.siteName%></em></h6>
+        <p><strong>Latitude: </strong><%=session.punchClock.latitude%></p>
+        <p><strong>Longitude: </strong><%=session.punchClock.longitude%></p>
+        <p><strong>Proximity: </strong><%=session.punchClock.proximity%>km</p>
+        <form action="/sessions/<%=session._id%>/?_method=PUT" method="POST">
+            <input type="datetime-local" id="time-punch" name="time" value="<%=formattedDate%>">
+            <input type ="hidden" name="latitude" value="<%=session.punchClock.latitude%>">
+            <input type ="hidden" name="longitude" value="<%=session.punchClock.longitude%>">
+            <input type ="hidden" name="proximity" value="<%=session.punchClock.proximity%>">
+        <%if(session.punchClock.verified === true) { %>
+            <p>
+                <label>
+                    <input type="checkbox" checked="checked" name="verified" value="true"/>
+                    <span>Verified?</span>
+                </label>
+            </p>
+        <% } else { %>
+            <p>
+                <label>
+                    <input type="checkbox" name="verified" value="true"/>
+                    <span>Verified?</span>
+                </label>
+            </p>    
+            <% } %>
+            <br>
+            <button class="btn waves-effect waves-light" type="submit" name="action">Update</button>
+        </form>
+    </div>
 </div>
 
 <%- include('../partials/footer') %>
