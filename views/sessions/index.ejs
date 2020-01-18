@@ -19,15 +19,19 @@
 
     <ul class="collapsible">
       <% sessions.forEach(function(m) { %>
+        <% if(m.punchClock.verified === true) { %>
         <li class="sessions">
-          <div class="collapsible-header"><h5><strong><%=m.userName%>: </strong><em><%=m.siteName%></em> - <%=m.punchClock.timePunch%></h5></div>
+          <div class="collapsible-header"><h6><strong><%=m.userName%> - </strong><em><%=m.siteName%></em>
+            <br><br>
+          <%=m.punchClock.timePunch%></h6>
+          </div>
           <div class="collapsible-body">
             <div class="container-3">
             <div class="report">
             <div><strong>Geolocation Verified: </strong><%=m.punchClock.verified%></div>
             <div><strong>Proximity: </strong><%=m.punchClock.proximity%> km</div>
             </div>
-                <form action="/sessions/<%=m._id%>" method="GET" class=edit-form>
+                <form action="/sessions/<%=m._id%>" method="GET" class="edit-form">
                     <button type="submit" name="action" class="btn-floating btn-large waves-effect waves-light green"><i class="material-icons">edit</i></button>
                 </form>
                 <form action="/sessions/<%=m._id%>/?_method=DELETE" class="delete-form" method="POST">
@@ -36,14 +40,37 @@
                 </form>
             </div>
           </div>
-        <% }); %>
+        <% } else { %>
+          <li class="sessions">
+          <div class="collapsible-header"><h6 class="red-text"><strong><%=m.userName%> - </strong><em><%=m.siteName%></em>
+            <br><br>
+          <%=m.punchClock.timePunch%></h6>
+          </div>
+          <div class="collapsible-body">
+            <div class="container-3">
+            <div class="report">
+            <div class="red-text"><strong>Geolocation Verified: </strong><%=m.punchClock.verified%></div>
+            <div class="red-text"><strong>Proximity: </strong><%=m.punchClock.proximity%> km</div>
+            </div>
+                <form action="/sessions/<%=m._id%>" method="GET" class="edit-form">
+                    <button type="submit" name="action" class="btn-floating btn-large waves-effect waves-light green"><i class="material-icons">edit</i></button>
+                </form>
+                <form action="/sessions/<%=m._id%>/?_method=DELETE" class="delete-form" method="POST">
+                    <input type="hidden" value="<%m._id%>">
+                    <button type="submit" name="action" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">delete</i></button>
+                </form>
+            </div>
+          </div>
+       <% } %>
+    <% }); %>
       </ul>
 <% } else { %>
 <h2>Your Time Punches</h2>
   <ul class="collapsible">
       <% sessions.forEach(function(m) { %>
+        <% if(m.punchClock.verified === true) { %>
         <li class="sessions">
-          <div class="collapsible-header"><h5><strong><%=m.siteName%>: </strong><%=m.punchClock.timePunch%></h5></div>
+          <div class="collapsible-header"><h6><strong><%=m.siteName%>: </strong><%=m.punchClock.timePunch%></h6></div>
           <div class="collapsible-body">
             <div class="container-3">
             <div class="report">
@@ -56,6 +83,22 @@
             </form>
             </div>
           </div>
+        <% } else { %>
+          <li class="sessions">
+            <div class="collapsible-header"><h6 class="red-text"><strong><%=m.siteName%>: </strong><%=m.punchClock.timePunch%></h6></div>
+            <div class="collapsible-body">
+              <div class="container-3">
+              <div class="report">
+              <div class="red-text"><strong>Geolocation Verified: </strong><%=m.punchClock.verified%></div>
+              <div class="red-text"><strong>Proximity: </strong><%=m.punchClock.proximity%> km</div class="red-text">
+              </div>
+              <form action="/sessions/<%=m._id%>/?_method=DELETE" class="delete-form" method="POST">
+                <input type="hidden" value="<%m._id%>">
+                <button type="submit" name="action" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">delete</i></button>
+              </form>
+              </div>
+            </div>
+          <% } %>
         <% }); %>
       </ul>
   <% } %>
