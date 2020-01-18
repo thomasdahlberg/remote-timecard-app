@@ -16,6 +16,7 @@ $(document).ready(function(){
     $('.fixed-action-btn').floatingActionButton();
     $('#time-punch').focus();
     $('#time-punch').select();
+    $('.sidenav').sidenav();
 });
 
 
@@ -84,7 +85,6 @@ $('#filter').on('click', (event)=> {
         this.style.visibility = 'hidden';
         this.style.height = '0px';
     });
-    // console.log($('#employees').val());
     $('.sessions').each(function(index){
         if(this.className === $('#employees').val() + " sessions"){
         this.style.visibility = 'visible';

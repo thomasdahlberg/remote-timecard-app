@@ -4,7 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
   <link rel='stylesheet' href='/css/style.css' />
+  <link rel="shortcut icon" href="http://example.com/favicon.ico" />
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Baloo&display=swap" rel="stylesheet">
   <!-- Materialize Icons -->
@@ -25,8 +33,15 @@
   <main>
     <!-- Dropdown Structure -->
     <ul id="dropdown1" class="dropdown-content">
-      <li><a href="/sessions">Sessions</a></li>
+      <li>
+        <% if (user) { %>
+            <a href="/logout"><i class="material-icons left">trending_flat</i>Log Out</a>
+          <% } else { %>
+          <a href="/auth/google"><i class="material-icons left">vpn_key</i>Login with Google</a>
+        <% } %>
+      </li>
       <li><a href="/sessions/new">Time Punch</a></li>
+      <li><a href="/sessions">Sessions</a></li>
       <% if(user){ %>
         <% if(user.adminUser === true) { %>
       <li><a href="/jobsites">Jobsites</a></li>
@@ -37,18 +52,29 @@
     <nav>
       <div class="nav-wrapper">
         <a href="#!" class="brand-logo"><i class="material-icons">access_time</i>Remote Timecard</a>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
-          <li>
-            <% if (user) { %>
-                <a href="/logout"><i class="material-icons left">trending_flat</i>Log Out</a>
-              <% } else { %>
-              <a href="/auth/google"><i class="material-icons left">vpn_key</i>Login with Google</a>
-            <% } %>
-          </li>
           <!-- Dropdown Trigger -->
-          <li><a class="dropdown-trigger" href="" data-target="dropdown1">Dropdown<i class="material-icons right">arrow_drop_down</i></a></li>
+          <li><a class="dropdown-trigger" href="" data-target="dropdown1"><i class="material-icons right">arrow_drop_down</i></a></li>
         </ul>
       </div>
     </nav>
     
   
+    <ul id="mobile-demo" class="sidenav">
+      <li>
+        <% if (user) { %>
+            <a href="/logout"><i class="material-icons left">trending_flat</i>Log Out</a>
+          <% } else { %>
+          <a href="/auth/google"><i class="material-icons left">vpn_key</i>Login with Google</a>
+        <% } %>
+      </li>
+      <li><a href="/sessions/new">Time Punch</a></li>
+      <li><a href="/sessions">Sessions</a></li>
+      <% if(user){ %>
+        <% if(user.adminUser === true) { %>
+      <li><a href="/jobsites">Jobsites</a></li>
+      <% } %>
+    <% } %>
+    
+    </ul>
