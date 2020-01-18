@@ -108,11 +108,12 @@ function index(req, res){
     console.log(req.user);
     if(req.user.adminUser === true){
         Session.find({}, function(err, sessions){
-            res.render('sessions/index', {title: 'Sessions Reports', user: req.user, sessions,});
+            User.find({}, function(err, users){
+                res.render('sessions/index', {title: 'Sessions Reports', user: req.user, sessions, users});
+            });
         });
     } else {
         Session.find({user: req.user}, function(err, sessions){
-        // Jobsite.findById(session.jobsite, function(err, jobsite){
             res.render('sessions/index', {title: 'Sessions Report', user: req.user, sessions});    
         
         });

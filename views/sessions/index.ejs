@@ -1,40 +1,60 @@
 <%- include('../partials/header') %>
 
-<% if(user.adminUser === true) { %>
-<h2>All Time Punches</h2>
-<ul class="collapsible">
-  <% sessions.forEach(function(m) { %>
-    <li class="sessions">
-      <div class="collapsible-header"><h5><strong><%=m.userName%>: </strong><em><%=m.siteName%></em> - <%=m.punchClock.timePunch%></h5></div>
-      <div class="collapsible-body">
-        <div><strong>Geolocation Verified: </strong><%=m.punchClock.verified%></div>
-        <div><strong>Proximity: </strong><%=m.punchClock.proximity%> km</div>
-        <div class="container">
-            <form action="/sessions/<%=m._id%>" method="GET">
-                <button type="submit" name="action" class="btn-floating btn-large waves-effect waves-light green"><i class="material-icons">edit</i></button>
-            </form>
-            <form action="/sessions/<%=m._id%>/?_method=DELETE" class="delete-form" method="POST">
-                <input type="hidden" value="<%m._id%>">
-                <button type="submit" name="action" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">delete</i></button>
-            </form>
-        </div>
-      </div>
-    <% }); %>
-  </ul>
+    <% if(user.adminUser === true) { %>
+    <h2>Time Punches</h2>
+    
+      <div class="container-2">
+        <select name="employees">
+          <option value="" disabled selected>Choose An Employee</option>
+          <% users.forEach(function(m) { %>
+          <option name="employee" value="<%=m._id%>">
+          <%=m.name%></option>
+          <% }); %>
+        </select>
+        <br>
+      <form> 
+        <button type="submit" id="filter" name="action" class="waves-effect waves-light btn"><i class="material-icons center">filter_list</i></button> 
+    </form>
+  </div>
+
+    <ul class="collapsible">
+      <% sessions.forEach(function(m) { %>
+        <li class="sessions">
+          <div class="collapsible-header"><h5><strong><%=m.userName%>: </strong><em><%=m.siteName%></em> - <%=m.punchClock.timePunch%></h5></div>
+          <div class="collapsible-body">
+            <div class="container-3">
+            <div class="report">
+            <div><strong>Geolocation Verified: </strong><%=m.punchClock.verified%></div>
+            <div><strong>Proximity: </strong><%=m.punchClock.proximity%> km</div>
+            </div>
+                <form action="/sessions/<%=m._id%>" method="GET" class=edit-form>
+                    <button type="submit" name="action" class="btn-floating btn-large waves-effect waves-light green"><i class="material-icons">edit</i></button>
+                </form>
+                <form action="/sessions/<%=m._id%>/?_method=DELETE" class="delete-form" method="POST">
+                    <input type="hidden" value="<%m._id%>">
+                    <button type="submit" name="action" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">delete</i></button>
+                </form>
+            </div>
+          </div>
+        <% }); %>
+      </ul>
 <% } else { %>
 <h2>Your Time Punches</h2>
-<ul class="collapsible">
+  <ul class="collapsible">
       <% sessions.forEach(function(m) { %>
         <li class="sessions">
           <div class="collapsible-header"><h5><strong><%=m.siteName%>: </strong><%=m.punchClock.timePunch%></h5></div>
           <div class="collapsible-body">
+            <div class="container-3">
+            <div class="report">
             <div><strong>Geolocation Verified: </strong><%=m.punchClock.verified%></div>
             <div><strong>Proximity: </strong><%=m.punchClock.proximity%> km</div>
+            </div>
             <form action="/sessions/<%=m._id%>/?_method=DELETE" class="delete-form" method="POST">
               <input type="hidden" value="<%m._id%>">
-              <br>
               <button type="submit" name="action" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">delete</i></button>
             </form>
+            </div>
           </div>
         <% }); %>
       </ul>
