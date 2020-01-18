@@ -65,7 +65,7 @@ $('#site-search-click').on('click', (event)=> {
     const regex = / /gi;
     userInput = $('#site-search-data').val().replace(regex, '+');
     $.ajax({
-        url: `https://remote-timecard-app.herokuapp.com/api`,
+        url: 'http://cors-anywhere.herokuapp.com/https://remote-timecard-app.herokuapp.com/api',
         type: "GET"
     }).then(function(data){
         let placesURL = `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${userInput}&key=${data}`
