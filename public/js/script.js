@@ -6,7 +6,6 @@ class Site {
         this.longitude = longitude;
     }
 }
-
 let newJobsites = [];
 
 $(document).ready(function(){
@@ -65,7 +64,7 @@ $('#site-search-click').on('click', (event)=> {
     const regex = / /gi;
     userInput = $('#site-search-data').val().replace(regex, '+');
     $.ajax({
-        url: 'http://cors-anywhere.herokuapp.com/https://remote-timecard-app.herokuapp.com/api',
+        url: `../api`,
         type: "GET"
     }).then(function(data){
         let placesURL = `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${userInput}&key=${data}`
