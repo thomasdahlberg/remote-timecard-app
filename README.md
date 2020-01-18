@@ -11,7 +11,11 @@ A web app for logging remote job site geolocations and timestamps
 
 ## Getting Started
 
-If you have a google account, you are ready to take it for a test drive. Simply go to this here: https://remote-timecard-app.herokuapp.com/, login and complete Google OAuth and you will be redirected to the standard non-Admin worker views (see screenshots for worker views below). Upon login the non-Admin user will land on the time punch screen and prompted to pick a job site and complete a Time Punch.
+If you have a google account, you are ready to take it for a test drive.
+
+Simply go to this here: https://remote-timecard-app.herokuapp.com/ 
+
+Login and complete Google OAuth and you will be redirected to the standard non-Admin worker views (see screenshots for worker views below). Upon login the non-Admin user will land on the time punch screen and prompted to pick a job site and complete a Time Punch.
 
 For those wishing to test drive the Admin User capabilities please contact me directly for those credentials. Admin Users have all the capabilities of the non-Admin user such as Time Punch and a Sessions index view, but also have editing/deleting capabilities, jobsite adding/viewing/searching access and full view of all workers' Session objects.
 
@@ -23,24 +27,37 @@ The next steps for this application are some Admin User utilities such as an API
 
 ### Navigation and PC/Mobile Formatting
 
-![Image](public/images/homePC.png)
+#### Home Screens
 
+PC
+![Image](public/images/homePC.png)
+![Image](public/images/aPCNav.png)
+
+Mobile
+![Image](public/images/homeMobile.png)
+![Image](public/images/homeMobileSidenav.png)
 
 
 ### Non-Admin User (Worker) Views
 
 Time Punch Screen (non-Admin Homepage): 
-
+![Image](public/images/naTimePunch.png)
 
 Sessions Screen:
-
+![Image](public/images/aSessionEdit.png)
 
 
 ### Admin User Views
 
 Job Sites Views:
+![Image](public/images/aJobsiteIndex.png)
+![Image](public/images/aJobsiteEdit.png)
+![Image](public/images/aJobsiteAdd.png)
 
 
 Sessions Report Views:
+![Image](public/images/aSessions1.png)
+![Image](public/images/aSessionsEdit.png)
+
 
 
