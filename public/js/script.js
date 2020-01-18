@@ -69,7 +69,7 @@ $('#site-search-click').on('click', (event)=> {
     }).then(function(data){
         let placesURL = `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${userInput}&key=${data}`
         $.ajax({
-            url: `http://cors-anywhere.herokuapp.com/${placesURL}`,
+            url: `https://cors-anywhere.herokuapp.com/${placesURL}`,
             type: "GET",
         }).then(function(data){
             console.log(data.results);
