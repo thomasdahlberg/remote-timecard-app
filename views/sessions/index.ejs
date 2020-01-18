@@ -4,7 +4,7 @@
     <h2>Time Punches</h2>
     
       <div class="container-2">
-        <select name="employees">
+        <select id="employees">
           <option value="" disabled selected>Choose An Employee</option>
           <% users.forEach(function(m) { %>
           <option name="employee" value="<%=m._id%>">
@@ -20,7 +20,7 @@
     <ul class="collapsible">
       <% sessions.forEach(function(m) { %>
         <% if(m.punchClock.verified === true) { %>
-        <li class="sessions">
+        <li class="<%=m.user%> sessions">
           <div class="collapsible-header"><h6><strong><%=m.userName%> - </strong><em><%=m.siteName%></em>
             <br><br>
           <%=m.punchClock.timePunch%></h6>
@@ -41,7 +41,7 @@
             </div>
           </div>
         <% } else { %>
-          <li class="sessions">
+          <li class="<%=m.user%> sessions">
           <div class="collapsible-header"><h6 class="red-text"><strong><%=m.userName%> - </strong><em><%=m.siteName%></em>
             <br><br>
           <%=m.punchClock.timePunch%></h6>

@@ -78,3 +78,17 @@ $('#site-search-click').on('click', (event)=> {
     });
 });
 
+$('#filter').on('click', (event)=> {
+    event.preventDefault();
+    $('.sessions').each(function(index){
+        this.style.visibility = 'hidden';
+        this.style.height = '0px';
+    });
+    // console.log($('#employees').val());
+    $('.sessions').each(function(index){
+        if(this.className === $('#employees').val() + " sessions"){
+        this.style.visibility = 'visible';
+        this.style.height = '100%';
+        }      
+    });
+});
