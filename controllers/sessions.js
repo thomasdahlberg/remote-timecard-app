@@ -79,7 +79,7 @@ function create(req, res) {
         jobsite: req.body.jobsite,
         siteName: jobsite.siteName,
         punchClock: {
-            timePunch: new Date(),
+            timePunch: new Date()-240,
             latitude: Number(req.body.latitude),
             longitude: Number(req.body.longitude),
             verified: verification,
