@@ -5,6 +5,7 @@
   "main": "server.js",
   "dependencies": {
     "cors": "^2.8.5",
+    "csv-stringify": "^5.3.6",
     "dotenv": "^8.2.0",
     "ejs": "^3.0.1",
     "ejs-lint": "^1.0.1",

@@ -1,6 +1,7 @@
 const Session = require('../models/session');
 const Jobsite = require('../models/jobsite');
 const User = require('../models/user');
+const fs = require('fs');
 let verification, verify;
 
 module.exports = {
@@ -105,9 +106,34 @@ function create(req, res) {
 }
 
 function index(req, res){
-    console.log(req.user);
     if(req.user.adminUser === true){
         Session.find({}, function(err, sessions){
+            let reportArr = [];
+            sessions.forEach(session => {
+                let reportObj = {
+                    sessionId: session._id,
+                    workerName: session.userName,
+                    jobSite: session.siteName,
+                    timePunch: session.punchClock.timePunch,
+                    verifiedPunch: session.punchClock.verified
+                }
+                reportArr.push(reportObj);
+            })
+            reportArr.sort(function(a, b){
+                let nameA = a.workerName.toUpperCase();
+                let nameB = b.workerName.toUpperCase();
+                if(nameA < nameB) {
+                    return -1;
+                }
+                if(nameA > nameB) {
+                    return 1;
+                }
+                return 0;
+            })
+            fs.writeFile("file.json", JSON.stringify(reportArr), err => {
+                if(err) throw err
+                console.log('file saved!');
+            });    
             User.find({}, function(err, users){
                 res.render('sessions/index', {title: 'Sessions Reports', user: req.user, sessions, users});
             });
